@@ -29,6 +29,11 @@ const commentSchema=new Schema({
         type:String,
         require:true,
         trim:true
+    },
+    topicId:{
+        type:String,
+        require:true,
+        trim:true
     }
     
 

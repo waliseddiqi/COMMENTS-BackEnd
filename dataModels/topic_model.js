@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 const Schema=mongoose.Schema;
-const Comment = require("./comments_model");
-const commentobj = new Comment();
+// const Comment = require("./comments_model");
+// const commentobj = new Comment();
 
 const topicSchema=new Schema({
     topic:{
@@ -36,9 +36,9 @@ const topicSchema=new Schema({
         trim:true
     },
     
-    comments:[
-        Comment.schema
-    ]
+    // comments:[
+    //     Comment.schema
+    // ]
     
 
    

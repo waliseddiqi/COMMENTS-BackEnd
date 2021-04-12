@@ -19,7 +19,6 @@ const topicObj = {
 "description":description,
 "username":username,
 "userId":userId,
-"Comment":[]
 }
 const newTopic = new Topic(topicObj);
 
@@ -31,6 +30,43 @@ res.status(400).send(err);
 })
 })
 
+router.route("/getTopicWithUserId").get((req,res)=>{
+    
+    const limit = req.query.limit==undefined?"10":req.query.limit;
+
+    const userId = req.body.userId;
+    try {
+        Topic.find({"userId":userId}).limit(parseInt(limit)).then((value)=>{
+            res.status(200).send(value);
+        })
+        .catch((err)=>{
+            res.status(400).send({"error":err})
+        })
+    
+    } catch (error) {
+        res.status(500).send({"error":error})
+    }
+
+
+
+})
+
+router.route("/getTopicAscending").get((req,res)=>{
+const limit = req.query.limit == undefined?"10":req.query.limit;
+
+try {
+    Topic.find().limit(parseInt(limit)).then((value)=>{
+        res.status(200).send(value);
+    }).
+    catch((err)=>{
+        res.status(400).send({"error":err});
+    })
+} catch (error) {
+    res.status(500).send({"error":error});
+}
+
+
+})
 
 
 
